@@ -1,4 +1,4 @@
-from .Matrix import *
+from .matrix import *
 
 
 def test_matrix_mul_on_scalar():
@@ -102,7 +102,7 @@ def test_multiply_row_on_scalar():
         [3, 6, 8],
         [5, 8, 10]
     ]
-    res = multiply_row_on_scalar(m, 0, 2)
+    res = mul_row_on_scalar(m, 0, 2)
     assert res == [
         [2, 8, 0],
         [3, 6, 8],

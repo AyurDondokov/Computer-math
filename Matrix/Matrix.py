@@ -1,5 +1,5 @@
 
-from Vector.Vector import *
+from Vector.vector import *
 
 EPS = 1E-5
 
@@ -100,7 +100,7 @@ def swap_rows(m, i1, i2):
             return m
 
 
-def multiply_row_on_scalar(m, i, scalar):
+def mul_row_on_scalar(m, i, scalar):
     """Умножить строку на скаляр"""
     if is_matrix(m):
         if 0 <= i < len(m):

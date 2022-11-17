@@ -1,4 +1,4 @@
-from .Vector import *
+from .vector import *
 
 
 def test_sum_of_scalar():
