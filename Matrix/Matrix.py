@@ -1,126 +1,127 @@
 
-from Vector.vector import *
+from vector.vector import *
 
 EPS = 1E-5
 
 
-def print_matrix(m):
+def print_matrix(matrix: list):
     """Вывод матрицы"""
-    assert is_matrix(m)
-    for i in m:
+    assert is_matrix(matrix)
+    for i in matrix:
         print_vector(i)
 
 
-def is_matrix(m):
+def is_matrix(matrix: list) -> bool:
     """Проверка на матрицу"""
-    assert len(m) != 0 and len(m[0]) != 0
-    len_of_matrix = len(m[0])
-    for i in m:
+    assert len(matrix) != 0 and len(matrix[0]) != 0
+    len_of_matrix = len(matrix[0])
+    for i in matrix:
         if len_of_matrix != len(i):
             return False
     return True
 
 
-def is_same_size_matrix(m1, m2):
+def is_same_size_matrix(matrix_1: list, matrix_2: list) -> bool:
     """Проверка на одинаковый размер матриц"""
-    if is_matrix(m1) and is_matrix(m2) and len(m1) == len(m2):
+    if is_matrix(matrix_1) and is_matrix(matrix_2) and len(matrix_1) == len(matrix_2):
         return True
     else:
         return False
 
 
-def matrix_mul_on_scalar(m, s):
+def matrix_mul_on_scalar(matrix: list, scalar: int) -> list:
     """Умножение матрицы на скаляр"""
-    assert is_matrix(m)
-    for i in range(len(m)):
-        m[i] = mul_on_scalar(m[i], s)
-    return m
+    assert is_matrix(matrix)
+    result_matrix = matrix.copy()
+    for i in range(len(result_matrix)):
+        result_matrix[i] = mul_on_scalar(result_matrix[i], scalar)
+    return result_matrix
 
 
-def matrix_sum(m1, m2):
+def matrix_sum(matrix_1: list, matrix_2: list) -> list:
     """Сложение матриц"""
-    assert is_same_size_matrix(m1, m2)
-    new_m = []
-    for i in range(len(m1)):
-        new_m.append(sum_of_scalar(m1[i], m2[i]))
-    return new_m
+    assert is_same_size_matrix(matrix_1, matrix_2)
+    result_matrix = []
+    for i in range(len(matrix_1)):
+        result_matrix.append(sum_of_scalar(matrix_1[i], matrix_2[i]))
+    return result_matrix
 
 
-def matrix_sub(m1, m2):
+def matrix_sub(matrix_1: list, matrix_2: list) -> list:
     """Вычитание матриц"""
-    assert is_same_size_matrix(m1, m2)
-    new_m = []
-    for i in range(len(m1)):
-        new_m.append(sub_of_scalar(m1[i], m2[i]))
-    return new_m
+    assert is_same_size_matrix(matrix_1, matrix_2)
+    result_matrix = []
+    for i in range(len(matrix_1)):
+        result_matrix.append(sub_of_scalar(matrix_1[i], matrix_2[i]))
+    return result_matrix
 
 
-def matrix_transposition(m):
+def matrix_transposition(matrix: list) -> list:
     """Транспонирование матриц"""
-    assert is_matrix(m)
-    new_m = []
-    for i in range(len(m[0])):
-        new_m.append([m[j][i] for j in range(len(m))])
-    return new_m
+    assert is_matrix(matrix)
+    result_matrix = []
+    for i in range(len(matrix[0])):
+        result_matrix.append([matrix[j][i] for j in range(len(matrix))])
+    return result_matrix
 
 
-def matrix_mul(m1, m2):
+def matrix_mul(matrix_1: list, matrix_2: list) -> list:
     """Умножение матриц"""
-    assert is_matrix(m1) and is_matrix(m2)
-    new_m = [[0 for _ in range(len(m2[0]))] for _ in range(len(m1))]
-    for i in range(len(m1)):
-        for j in range(len(m2[0])):
-            for k in range(len(m2)):
-                new_m[i][j] += m1[i][k] * m2[k][j]
-    return new_m
+    assert is_matrix(matrix_1) and is_matrix(matrix_2)
+    result_matrix = [[0 for _ in range(len(matrix_2[0]))] for _ in range(len(matrix_1))]
+    for i in range(len(matrix_1)):
+        for j in range(len(matrix_2[0])):
+            for k in range(len(matrix_2)):
+                result_matrix[i][j] += matrix_1[i][k] * matrix_2[k][j]
+    return result_matrix
 
 
-def get_row(m, i):
+def get_row(matrix: list, index: int) -> list:
     """Получить строку по индексу"""
-    if is_matrix(m):
-        if 0 <= i < len(m):
-            return m[i]
+    if is_matrix(matrix):
+        if 0 <= index < len(matrix):
+            return matrix[index]
 
 
-def get_column(m, i):
+def get_column(matrix: list, index: int) -> list:
     """Получить столбец по индексу"""
-    if is_matrix(m):
-        t_m = matrix_transposition(m)
-        if 0 <= i < len(t_m):
-            return get_row(t_m, i)
+    if is_matrix(matrix):
+        transposed_matrix = matrix_transposition(matrix)
+        if 0 <= index < len(transposed_matrix):
+            return get_row(transposed_matrix, index)
 
 
-def swap_rows(m, i1, i2):
-    """Поменять строки местами"""
-    if is_matrix(m):
-        if 0 <= i1 < len(m) and 0 <= i2 < len(m):
-            temp = m[i1]
-            m[i1] = m[i2]
-            m[i2] = temp
-            return m
+def swap_rows(matrix: list, index_1: int, index_2: int) -> list:
+    """Поменять строки местами с индексом index_1 на строку с индексом index_2"""
+    if is_matrix(matrix):
+        if 0 <= index_1 < len(matrix) and 0 <= index_2 < len(matrix):
+            temp = matrix[index_1]
+            matrix[index_1] = matrix[index_2]
+            matrix[index_2] = temp
+            return matrix
 
 
-def mul_row_on_scalar(m, i, scalar):
+def mul_row_on_scalar(matrix: list, index: int, scalar: int) -> list:
     """Умножить строку на скаляр"""
-    if is_matrix(m):
-        if 0 <= i < len(m):
-            m[i] = mul_on_scalar(m[i], scalar)
-            return m
+    if is_matrix(matrix):
+        if 0 <= index < len(matrix):
+            matrix[index] = mul_on_scalar(matrix[index], scalar)
+            return matrix
 
 
-def sum_mul_rows(m, i_1, i_2, scalar):
-    """Сложение строки матрицы с индексом i_1 на строку с индексом i_2, умноженную на скаляр"""
-    if is_matrix(m):
-        if 0 <= i_1 < len(m) and 0 <= i_2 < len(m):
-            temp = mul_on_scalar(m[i_2].copy(), scalar)
-            m[i_1] = sum_of_scalar(m[i_1], temp)
-            return m
+def sum_mul_rows(matrix: list, index_1: int, index_2: int, scalar: int) -> list:
+    """Сложение строки матрицы с индексом index_1 на строку с индексом index_2, умноженную на скаляр"""
+    if is_matrix(matrix):
+        if 0 <= index_1 < len(matrix) and 0 <= index_2 < len(matrix):
+            temp = mul_on_scalar(matrix[index_2].copy(), scalar)
+            matrix[index_1] = sum_of_scalar(matrix[index_1], temp)
+            return matrix
 
 
-def sub_mul_rows(m, i_1, i_2, scalar):
-    """Вычитание строки матрицы с индексом i_1 на строку с индексом i_2, умноженную на скаляр"""
-    if is_matrix(m):
-        if 0 <= i_1 < len(m) and 0 <= i_2 < len(m):
-            temp = mul_on_scalar(m[i_2].copy(), scalar)
-            m[i_1] = sub_of_scalar(m[i_1], temp)
-            return m
+def sub_mul_rows(matrix: list, index_1: int, index_2: int, scalar: int) -> list:
+    """Вычитание строки матрицы с индексом index_1 на строку с индексом index_2, умноженную на скаляр"""
+    if is_matrix(matrix):
+        if 0 <= index_1 < len(matrix) and 0 <= index_2 < len(matrix):
+            temp = mul_on_scalar(matrix[index_2].copy(), scalar)
+            matrix[index_1] = sub_of_scalar(matrix[index_1], temp)
+            return matrix
