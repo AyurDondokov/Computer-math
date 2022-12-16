@@ -45,24 +45,30 @@ def get_expanded_matrix(a_matrix: list, b_matrix: list) -> list:
     return result_matrix
 
 
-def jordan_gauss_method(a_matrix: list, b_matrix: list) -> list:
+def jordan_gauss_method(a_matrix: list, b_matrix: list,
+                        print_process: bool = False) -> list:
     """Метод Жордана-Гауса"""
     assert is_matrix(a_matrix) and len(b_matrix) == len(a_matrix)
     matrix = get_expanded_matrix(a_matrix, b_matrix)
-    print("\nРасширенная матрица A|B:")
-    print_matrix(matrix)
 
-    forward_stroke(matrix)
-    print("\nПрямой ход:")
-    print_matrix(matrix)
+    if print_process:
+        print("\nРасширенная матрица A|B:")
+        print_matrix(matrix)
 
-    backward_stroke(matrix)
-    print("\nОбратный ход:")
-    print_matrix(matrix)
+    matrix = forward_stroke(matrix)
+    if print_process:
+        print("\nПрямой ход:")
+        print_matrix(matrix)
 
-    print("\nКорни уравнения:")
+    matrix = backward_stroke(matrix)
+    if print_process:
+        print("\nОбратный ход:")
+        print_matrix(matrix)
+
     last_column_index = len(matrix[0])-1
     roots = get_column(matrix, last_column_index)
-    print(roots)
+    if print_process:
+        print("\nКорни уравнения:")
+        print(roots)
 
     return roots
