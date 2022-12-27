@@ -3,3 +3,4 @@
 /gauss_jordan/.pytest_cache/
 /interpolation_catalog/.pytest_cache/
 .pytest_cache/
+..idea/
