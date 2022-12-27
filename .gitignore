@@ -1,4 +1,5 @@
 /inverse_matrix_search/.pytest_cache/
 /vector_catalog/.pytest_cache/
 /gauss_jordan/.pytest_cache/
-*/pytest_cache/
+/interpolation_catalog/.pytest_cache/
+.pytest_cache/

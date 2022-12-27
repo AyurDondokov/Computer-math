@@ -1,5 +1,5 @@
 from inverse_matrix_search import inverse_matrix
-import vector.vector as vector
+import vector_catalog.vector as vector
 
 
 def test_inverse_matrix_1():

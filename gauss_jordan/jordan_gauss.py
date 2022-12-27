@@ -1,8 +1,8 @@
-from matrix.matrix import *
+from matrix_catalog.matrix import *
 
 
 def leading_element_index(matrix: list, index: int) -> int:
-    """Ведущий элемент строки index в матрице matrix"""
+    """Ведущий элемент строки index в матрице matrix_catalog"""
     i = 0
     while matrix[index][i] == 0:
         i += 1
