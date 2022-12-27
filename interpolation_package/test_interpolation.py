@@ -1,6 +1,6 @@
-import interpolation_catalog.interpolation as ipol
-import interpolation_catalog.draw_interpolation as draw_ipol
-import vector_catalog.vector as vec
+import interpolation_package.interpolation as ipol
+import interpolation_package.draw_interpolation as draw_ipol
+import vector_package.vector as vec
 
 
 def test_do_interpolation_1():

@@ -1,4 +1,4 @@
-from vector_catalog.vector import *
+from vector_package.vector import *
 
 EPS = 1E-5
 

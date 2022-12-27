@@ -1,4 +1,4 @@
-from gauss_jordan.jordan_gauss import *
+from gauss_jordan_package.jordan_gauss import *
 
 
 def line_equation_get_ab(data_xy,

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.pyplot as pypl
-import interpolation_catalog.interpolation as inp
-import matrix_catalog.matrix as mx
+import interpolation_package.interpolation as inp
+import matrix_package.matrix as mx
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
 import numpy as np
 

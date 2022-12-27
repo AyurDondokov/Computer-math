@@ -1,4 +1,4 @@
-from gauss_jordan import jordan_gauss
+from gauss_jordan_package import jordan_gauss
 
 
 def equation_system_test(a_matrix, b_matrix):

@@ -1,4 +1,4 @@
-import gauss_jordan.jordan_gauss as gauss_jordan
+import gauss_jordan_package.jordan_gauss as gauss_jordan
 
 
 def get_unit_matrix(n: int) -> list:
