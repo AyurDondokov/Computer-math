@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import maclaurin_expansions_package.maclaurin_expansions as me
 
+
 def draw_maclaurin_function(title, range_of_func, func, n):
     masX = []
     masY = []
@@ -18,5 +19,21 @@ def draw_maclaurin_function(title, range_of_func, func, n):
     plt.show()
 
 
-def test_draw_maclaurin_function():
-    draw_maclaurin_function("get e", (-10, 10), me.get_maclaurin_arcsin, 2)
+def test_draw_maclaurin_e():
+    draw_maclaurin_function("get e", (-10, 10), me.get_maclaurin_e, 2)
+
+
+def test_draw_maclaurin_sin():
+    draw_maclaurin_function("get sin", (-10, 10), me.get_maclaurin_sin, 2)
+
+
+def test_draw_maclaurin_cos():
+    draw_maclaurin_function("get cos", (-10, 10), me.get_maclaurin_cos, 2)
+
+
+def test_draw_maclaurin_arcsin():
+    draw_maclaurin_function("get arcsin", (-10, 10), me.get_maclaurin_arcsin, 2)
+
+
+def test_draw_maclaurin_arccos():
+    draw_maclaurin_function("get arccos", (-10, 10), me.get_maclaurin_arccos, 2)

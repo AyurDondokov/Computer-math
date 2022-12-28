@@ -24,7 +24,7 @@ def get_maclaurin_sin(x, n):
         if i == 0:
             result += x
         else:
-            result += (-1 ** i) * (x ** (2*i+1)) / factorial(2*i+1)
+            result += ((-1) ** i) * (x ** (2*i+1)) / factorial(2*i+1)
     return result
 
 
@@ -34,7 +34,7 @@ def get_maclaurin_cos(x, n):
         if i == 0:
             result += 1
         else:
-            result += (-1 ** i) * (x ** (2*i)) / factorial(2*i)
+            result += ((-1) ** i) * (x ** (2*i)) / factorial(2*i)
     return result
 
 
