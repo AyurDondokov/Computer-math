@@ -1,5 +1,4 @@
 import interpolation_package.interpolation as ipol
-import interpolation_package.draw_interpolation as draw_ipol
 import vector_package.vector as vec
 
 
